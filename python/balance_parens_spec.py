@@ -7,7 +7,7 @@ class TestParens(unittest.TestCase):
     When you call Balanced Parens you get a string back
     """
     def test_returns_a_string(self):
-        self.assertTrue(type(balance_parens("test", output)) == list)
+        self.assertTrue(type(balance_parens("test")) == str)
 
     """
     When you call balanced parens, you get correctly balanced strings

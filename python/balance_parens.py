@@ -1,32 +1,33 @@
-# def balance_parens(string):
-#     # Define a function that is called with a string
-#     # iterate through the string from left to right +1 for each open parens -1 for each close parens, when counter < 0 remove that right parens
-#     output = []
-#     final = []
-#     internal_parens(string.split(), output)
-#     internal_parens(output[::-1], final)
-#     final_string = ""
-#     return final_string.join(final)[::-1]
-
-# def internal_parens(array, output):
-#     count = 0
-#     for x in array:
-#         if not(count <= 0 and x == ")"):
-#             output.append(x)
-#         elif (x == "("):
-#             count += 1
-#         elif(x == ")"):6
-#             count -= 1
-
-
-
-# print(balance_parens('hi!()('))
-
-
-
-
 def balance_parens(string):
-    # Define a function that is called with a string
-    # 
-    pass
-    result = ''
+    # Define a function that is called with a string that contains letters, numbers, or parens
+    balanced_str = ''
+    tbd_open_parens_index_list = []
+    # Balance our string
+    # Loop through the entire string
+
+    # If character is not parens, ignore character
+    for c in string:
+        if c!= "(" and c != ")":
+            balanced_str += c
+        
+    # If there is a parens, need to consider the following cases:
+    # If open parens: then we MAY have a closing parens
+        elif c == "(":
+            # Append index of open parens 
+            balanced_str += c
+            tbd_open_parens_index_list.append(len(balanced_str) -1)
+    # If we get a close parens, check if it is paired with open parens.
+        else:
+            if len(tbd_open_parens_index_list) == 0:
+                continue
+            else:
+                tbd_open_parens_index_list.pop()
+                balanced_str += c
+
+    fully_balanced_str = ""
+    for i, c in enumerate(balanced_str):
+        if i in tbd_open_parens_index_list:
+            continue
+        fully_balanced_str += c
+    # Return value is a string that has every open paren closed (left right parity)
+    return fully_balanced_str
