@@ -10,6 +10,11 @@ class TestParens(unittest.TestCase):
         self.assertTrue(type(balance_parens("test")) == str)
 
     """
+    When you call balanced parens with "" you get "" back:
+    """
+    def test_returns_a_blank(self):
+        self.assertTrue(balance_parens("") == "")
+    """
     When you call balanced parens, you get correctly balanced strings
     """
     def test_function_output_accuracy(self):
@@ -27,10 +32,12 @@ class TestParens(unittest.TestCase):
         self.assertTrue(balance_parens(")())(()()(")  == "()()()")
     
     """
-    Challenge Question
+    Challenge Questions
     """
     def test_function_challenge(self):
         self.assertTrue(balance_parens("abc(d)(ef(g(h))ij)k)lm()o)p") == "abc(d)(ef(g(h))ij)klm()op")
+    def test_function_additional(self):
+        self.assertTrue(balance_parens("(((((asdfjkl;))(())(((((((") == "((asdfjkl;))(())")
 
 if __name__ == '__main__':
     unittest.main()
